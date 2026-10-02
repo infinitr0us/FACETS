@@ -1,0 +1,55 @@
+{
+  "seed": 42,
+  "device": "cuda",
+  "ulip_checkpoint": "./pretrained/ULIP-2-PointBERT-8k-xyz-pc-slip_vit_b-objaverse-pretrained.pt",
+  "model": {
+    "d_mini": 256,
+    "d_e": 64,
+    "k_gnn": 12,
+    "num_patches": 64,
+    "patch_size": 32,
+    "eps_zscore": 1e-6,
+    "attn_layer_indices": null
+  },
+  "data": {
+    "dataset": "anomaly-shapenet",
+    "data_root": "./dataset/Anomaly-ShapeNet",
+    "num_points": 8192,
+    "classes": null,
+    "rotate_axis": "mixed",
+    "so3_prob": 0.5,
+    "scale_lo": 0.9,
+    "scale_hi": 1.1,
+    "num_augmented_views": 4
+  },
+  "text": {
+    "use_prompt_ensemble": false,
+    "open_clip_variant": "ViT-bigG-14",
+    "open_clip_pretrained": "laion2b_s39b_b160k",
+    "fine_grained_captions_json": null
+  },
+  "train": {
+    "epochs": 200,
+    "warmup_epochs": 5,
+    "base_lr": 5e-4,
+    "P_hat_lr": 5e-5,
+    "weight_decay": 0.01,
+    "grad_clip_norm": 1.0,
+    "batch_size": 128,
+    "point_patch_sample": 0,
+    "lambda_intra": 0.1,
+    "use_ema": true,
+    "ema_decay": 0.995,
+    "eval_ema": true,
+    "num_workers": 4,
+    "amp": true,
+    "log_interval": 10,
+    "eval_interval": 10,
+    "save_dir": "./runs/shapenet"
+  },
+  "infer": {
+    "knn_interp_k": 3,
+    "object_score_mode": "cosine",
+    "point_auc_mode": "pooled"
+  }
+}

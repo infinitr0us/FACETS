@@ -1,0 +1,7 @@
+# Install PyTorch first, built for your CUDA version:
+# https://pytorch.org/get-started/locally/
+# The paper's experiments used PyTorch 2.8.0 with Python 3.11.
+torch>=2.8
+numpy
+open3d
+open_clip_torch
